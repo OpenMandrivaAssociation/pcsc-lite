@@ -6,7 +6,7 @@
 
 Name: pcsc-lite
 Summary: M.U.S.C.L.E. PC/SC Framework for Linux
-Version: 1.4.0
+Version: 1.4.2
 Release: %mkrel 1
 License: GPL 
 Group: System/Servers
@@ -155,6 +155,9 @@ SafeSign.
 # No distributed proc
 make
 
+# pdf
+make -C doc pcsc-lite.pdf ifdhandler-3.pdf
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -167,14 +170,8 @@ cp %SOURCE1  $RPM_BUILD_ROOT/%{_initrddir}/pcscd
 
 # remove unpackaged files
 rm -f	$RPM_BUILD_ROOT%{_datadir}/pcscd.startup
-rm -f  $RPM_BUILD_ROOT/usr/doc/pcsc-lite*
-rm -f  $RPM_BUILD_ROOT/usr/doc/ifdhandler*
-rm -f  $RPM_BUILD_ROOT/usr/doc/muscle*
-rm -f  $RPM_BUILD_ROOT/usr/doc/README*
-
+rm -rf  $RPM_BUILD_ROOT/%{_docdir}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-
 
