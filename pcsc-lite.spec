@@ -1,12 +1,14 @@
 %define major 1
 %define libname %mklibname pcsclite %{major}
+%define develname %mklibname pcsclite -d
+%define staticname %mklibname pcsclite -d -s
 
 %define with_debug 1
 %{?_with_debug: %{expand: %%global with_debug 1}}
 
 Name: pcsc-lite
 Summary: M.U.S.C.L.E. PC/SC Framework for Linux
-Version: 1.4.2
+Version: 1.4.3
 Release: %mkrel 1
 License: GPL 
 Group: System/Servers
@@ -83,15 +85,16 @@ SafeSign.
 
 #---------------------------------------------------------
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary: Muscle PCSC Framework for Linux development files
 Group: Development/Other
 Requires: %{libname} = %{version}
 Provides: %{name}-devel = %{version}-%{release}
 Provides: libpcsclite-devel = %{version}-%{release}
+Obsoletes: %mklibname -d pcsclite 1
 Conflicts: %mklibname -d pcsclite 0
 
-%description -n %{libname}-devel
+%description -n %{develname}
 The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a
 very small form factor for communicating to smartcards and readers.
 PCSC Lite uses the same winscard api as used under Windows(R).
@@ -104,7 +107,7 @@ This package was tested to work with A.E.T. Europe B.V. SafeSign. This
 package is suported by A.E.T. Europe B.V. when used in combination with
 SafeSign.
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/pkgconfig/* 
 %{_includedir}/*
@@ -113,25 +116,26 @@ SafeSign.
 
 #---------------------------------------------------------
 
-%package -n %{libname}-static-devel
+%package -n %{staticname}
 Summary: Muscle PCSC Framework for Linux development files
 Group: Development/Other
-Requires: %{libname}-devel
+Requires: %{develname}
+Obsoletes: %mklibname -d -s pcsclite 1
 
-%description -n %{libname}-static-devel
+%description -n %{staticname}
 The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a
 very small form factor for communicating to smartcards and readers.
 PCSC Lite uses the same winscard api as used under Windows(R).
 
-The %{name}-devel package contains the header files and libraries
+The %{name}-static-devel package contains the static header files and libraries
 needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware 
-programs, you'll need to install this package.
+programs, you may need to install this package.
 
 This package was tested to work with A.E.T. Europe B.V. SafeSign. This
 package is suported by A.E.T. Europe B.V. when used in combination with
 SafeSign.
 
-%files -n %{libname}-static-devel
+%files -n %{staticname}
 %defattr(-,root,root)
 %{_libdir}/*.a
 
