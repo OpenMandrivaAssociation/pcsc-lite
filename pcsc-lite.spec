@@ -8,12 +8,12 @@
 
 Name: pcsc-lite
 Summary: M.U.S.C.L.E. PC/SC Framework for Linux
-Version: 1.4.3
+Version: 1.4.4
 Release: %mkrel 1
-License: GPL 
+License: BSD
 Group: System/Servers
-Source0: https://alioth.debian.org/download.php/1472/pcsc-lite-%{version}.tar.gz
-Source1: https://alioth.debian.org/download.php/1473/pcsc-lite-%{version}.tar.gz.asc
+Source0: https://alioth.debian.org/download.php/2106/pcsc-lite-%{version}.tar.gz
+Source1: https://alioth.debian.org/download.php/2107/pcsc-lite-%{version}.tar.gz.asc
 Source1: pcscd.script
 URL: http://pcsclite.alioth.debian.org
 BuildRequires: chkconfig 
