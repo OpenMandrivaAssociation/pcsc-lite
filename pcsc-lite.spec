@@ -21,7 +21,6 @@ BuildRequires: flex
 BuildRequires: libusb-devel
 BuildRequires: pkgconfig
 BuildRequires: tetex-latex
-BuildRoot: %{_tmppath}/%{name}-root
 Requires(pre): rpm-helper
 Requires: rpm-helper
 
