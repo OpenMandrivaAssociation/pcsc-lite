@@ -72,7 +72,7 @@ very small form factor for communicating to smartcards and readers.
 PCSC Lite uses the same winscard api as used under Windows(R).
 
 The %{name}-devel package contains the header files and libraries
-needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware 
+needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware
 programs, you'll need to install this package.
 
 This package was tested to work with A.E.T. Europe B.V. SafeSign. This
@@ -100,7 +100,7 @@ very small form factor for communicating to smartcards and readers.
 PCSC Lite uses the same winscard api as used under Windows(R).
 
 The %{name}-devel package contains the header files and libraries
-needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware 
+needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware
 programs, you'll need to install this package.
 
 This package was tested to work with A.E.T. Europe B.V. SafeSign. This
@@ -128,7 +128,7 @@ very small form factor for communicating to smartcards and readers.
 PCSC Lite uses the same winscard api as used under Windows(R).
 
 The %{name}-static-devel package contains the static header files and libraries
-needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware 
+needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware
 programs, you may need to install this package.
 
 This package was tested to work with A.E.T. Europe B.V. SafeSign. This
