@@ -9,7 +9,7 @@
 Name: pcsc-lite
 Summary: M.U.S.C.L.E. PC/SC Framework for Linux
 Version: 1.4.4
-Release: %mkrel 1
+Release: %mkrel 2
 License: BSD
 Group: System/Servers
 Source0: https://alioth.debian.org/download.php/2106/pcsc-lite-%{version}.tar.gz
