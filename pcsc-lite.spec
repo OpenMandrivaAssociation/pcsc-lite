@@ -9,7 +9,7 @@
 Name: pcsc-lite
 Summary: M.U.S.C.L.E. PC/SC Framework for Linux
 Version: 1.4.4
-Release: %mkrel 2
+Release: %mkrel 3
 License: BSD
 Group: System/Servers
 Source0: https://alioth.debian.org/download.php/2106/pcsc-lite-%{version}.tar.gz
@@ -46,8 +46,8 @@ SafeSign.
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING DRIVERS HELP INSTALL NEWS README SECURITY
-%doc doc/pcsc-lite.pdf doc/ifdhandler-3.pdf doc/README.DAEMON
+%doc AUTHORS COPYING DRIVERS HELP INSTALL NEWS README SECURITY
+%doc doc/README.DAEMON
 %attr(755,root,root) %{_initrddir}/pcscd
 %dir %{_sysconfdir}/reader.conf.d
 %{_sysconfdir}/reader.conf.d/*
@@ -109,6 +109,7 @@ SafeSign.
 
 %files -n %{develname}
 %defattr(-,root,root)
+%doc ChangeLog doc/pcsc-lite.pdf doc/ifdhandler-3.pdf
 %{_libdir}/pkgconfig/* 
 %{_includedir}/*
 %{_libdir}/*.la
