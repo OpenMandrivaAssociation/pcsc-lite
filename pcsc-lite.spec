@@ -18,7 +18,7 @@ Source1: pcscd.script
 URL: http://pcsclite.alioth.debian.org
 BuildRequires: chkconfig 
 BuildRequires: flex
-BuildRequires: libusb-devel
+BuildRequires: libhal-devel
 BuildRequires: pkgconfig
 BuildRequires: tetex-latex
 BuildRoot: %{_tmppath}/%{name}-root
