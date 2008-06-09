@@ -63,8 +63,12 @@ Group: System/Libraries
 Conflicts: %name < 1.1.2-5mdk
 Provides: libpcsclite%{major} = %{version}-%{release}
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %description -n %{libname}
 The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a
