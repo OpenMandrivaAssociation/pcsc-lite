@@ -8,14 +8,14 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.4.102
+Version:	1.5.1
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
 Source0:	https://alioth.debian.org/frs/download.php/2479/pcsc-lite-%{version}.tar.bz2
 Source1:	https://alioth.debian.org/frs/download.php/2480/pcsc-lite-%{version}.tar.bz2.asc
-Source1:	pcscd.script
+Source2:	pcscd.script
 BuildRequires:	chkconfig 
 BuildRequires:	flex
 BuildRequires:	libhal-devel
@@ -129,7 +129,7 @@ mkdir -p %{buildroot}%{_libdir}/pcsc/{services,drivers} %{buildroot}%{_sysconfdi
 %makeinstall_std
 
 mkdir -p %{buildroot}/%{_initrddir}
-cp %SOURCE1 %{buildroot}/%{_initrddir}/pcscd
+cp %SOURCE2 %{buildroot}/%{_initrddir}/pcscd
 
 # remove unpackaged files
 rm -f %{buildroot}%{_datadir}/pcscd.startup
