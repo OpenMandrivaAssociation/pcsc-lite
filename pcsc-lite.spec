@@ -6,7 +6,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.6.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
@@ -78,7 +78,8 @@ SafeSign.
 %package -n	%{staticname}
 Summary:	Muscle PCSC Framework for Linux development files
 Group:		Development/Other
-Requires:	%{develname}
+Requires:	%{develname} = %version
+Provides:	%name-static-devel = %version-%release
 Obsoletes:	%mklibname -d -s pcsclite 1
 
 %description -n	%{staticname}
