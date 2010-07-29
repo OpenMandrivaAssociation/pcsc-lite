@@ -3,13 +3,10 @@
 %define develname %mklibname pcsclite -d
 %define staticname %mklibname pcsclite -d -s
 
-%define with_debug 1
-%{?_with_debug: %{expand: %%global with_debug 1}}
-
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.5.5
-Release:	%mkrel 2
+Version:	1.6.1
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
@@ -18,8 +15,7 @@ Source1:	https://alioth.debian.org/frs/download.php/2480/pcsc-lite-%{version}.ta
 Source2:	pcscd.script
 BuildRequires:	chkconfig 
 BuildRequires:	flex
-BuildRequires:	libhal-devel
-BuildRequires:	pkgconfig
+BuildRequires:	libusb-devel
 BuildRequires:	tetex-latex
 Requires(pre):	rpm-helper
 Requires:	rpm-helper
@@ -79,52 +75,21 @@ This package was tested to work with A.E.T. Europe B.V. SafeSign. This
 package is suported by A.E.T. Europe B.V. when used in combination with
 SafeSign.
 
-%package -n	%{staticname}
-Summary:	Muscle PCSC Framework for Linux development files
-Group:		Development/Other
-Requires:	%{develname}
-Obsoletes:	%mklibname -d -s pcsclite 1
-
-%description -n	%{staticname}
-The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a
-very small form factor for communicating to smartcards and readers.
-PCSC Lite uses the same winscard api as used under Windows(R).
-
-The %{name}-static-devel package contains the static header files and libraries
-needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware
-programs, you may need to install this package.
-
-This package was tested to work with A.E.T. Europe B.V. SafeSign. This
-package is suported by A.E.T. Europe B.V. when used in combination with
-SafeSign.
-
 %prep
-
 %setup -q
 
 %build
 %serverbuild
 %configure2_5x \
    --enable-usbdropdir=%{_libdir}/pcsc/drivers/ \
-   --enable-muscledropdir=%{_libdir}/pcsc/services/ \
-   --enable-scf \
-   --enable-runpid=%{_var}/run/pcscd.pid \
-%if %{with_debug}
-   --enable-debugatr \
-   --enable-musclecarddebug \
-%endif
-   --enable-extendedapdu
-
-# No distributed proc
-make
+   --disable-libhal --enable-libusb
+%make
 
 # pdf
-make -C doc pcsc-lite.pdf ifdhandler-3.pdf
+make -C doc ifdhandler-3.pdf
 
 %install
 rm -rf %{buildroot}
-
-mkdir -p %{buildroot}%{_libdir}/pcsc/{services,drivers} %{buildroot}%{_sysconfdir}/reader.conf.d
 
 %makeinstall_std
 
@@ -157,11 +122,8 @@ rm -rf %{buildroot}
 %doc AUTHORS COPYING DRIVERS HELP INSTALL NEWS README SECURITY
 %doc doc/README.DAEMON
 %attr(755,root,root) %{_initrddir}/pcscd
-%dir %{_sysconfdir}/reader.conf.d
-%{_sysconfdir}/reader.conf.d/*
 %{_mandir}/*/*
 %{_sbindir}/*
-%{_libdir}/pcsc
 
 %files -n %{libname}
 %defattr(-,root,root)
@@ -169,12 +131,8 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc ChangeLog doc/pcsc-lite.pdf doc/ifdhandler-3.pdf
+%doc ChangeLog doc/ifdhandler-3.pdf
 %{_libdir}/pkgconfig/* 
 %{_includedir}/*
 %{_libdir}/*.la
 %{_libdir}/*.so
-
-%files -n %{staticname}
-%defattr(-,root,root)
-%{_libdir}/*.a
