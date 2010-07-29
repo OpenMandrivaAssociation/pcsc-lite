@@ -6,7 +6,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.6.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
@@ -75,12 +75,31 @@ This package was tested to work with A.E.T. Europe B.V. SafeSign. This
 package is suported by A.E.T. Europe B.V. when used in combination with
 SafeSign.
 
+%package -n	%{staticname}
+Summary:	Muscle PCSC Framework for Linux development files
+Group:		Development/Other
+Requires:	%{develname}
+Obsoletes:	%mklibname -d -s pcsclite 1
+
+%description -n	%{staticname}
+The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a
+very small form factor for communicating to smartcards and readers.
+PCSC Lite uses the same winscard api as used under Windows(R).
+
+The %{name}-static-devel package contains the static header files and libraries
+needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware
+programs, you may need to install this package.
+
+This package was tested to work with A.E.T. Europe B.V. SafeSign. This
+package is suported by A.E.T. Europe B.V. when used in combination with
+SafeSign.
+
 %prep
 %setup -q
 
 %build
 %serverbuild
-%configure2_5x \
+%configure2_5x --enable-static \
    --enable-usbdropdir=%{_libdir}/pcsc/drivers/ \
    --disable-libhal --enable-libusb
 %make
@@ -136,3 +155,7 @@ rm -rf %{buildroot}
 %{_includedir}/*
 %{_libdir}/*.la
 %{_libdir}/*.so
+
+%files -n %{staticname}
+%defattr(-,root,root)
+%{_libdir}/*.a
