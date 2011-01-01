@@ -5,7 +5,7 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.6.4
+Version:	1.6.6
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Servers
@@ -16,7 +16,6 @@ Source2:	pcscd.script
 BuildRequires:	chkconfig 
 BuildRequires:	flex
 BuildRequires:	libusb-devel
-BuildRequires:	tetex-latex
 Requires(pre):	rpm-helper
 Requires:	rpm-helper
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -105,9 +104,6 @@ SafeSign.
    --disable-libhal --enable-libusb
 %make
 
-# pdf
-make -C doc ifdhandler-3.pdf
-
 %install
 rm -rf %{buildroot}
 
@@ -151,7 +147,7 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc ChangeLog doc/ifdhandler-3.pdf
+%doc ChangeLog
 %{_libdir}/pkgconfig/* 
 %{_includedir}/*
 %{_libdir}/*.la
