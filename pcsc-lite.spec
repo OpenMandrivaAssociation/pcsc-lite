@@ -5,8 +5,8 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.6.6
-Release:	%mkrel 2
+Version:	1.8.2
+Release:	1
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
@@ -18,7 +18,6 @@ BuildRequires:	flex
 BuildRequires:	libusb-devel
 Requires(pre):	rpm-helper
 Requires:	rpm-helper
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 pcscd is the daemon program for PC/SC Lite. It is a resource 
@@ -101,12 +100,10 @@ SafeSign.
 %serverbuild
 %configure2_5x --enable-static \
    --enable-usbdropdir=%{_libdir}/pcsc/drivers/ \
-   --disable-libhal --enable-libusb
+   --disable-libhal --enable-libusb --disable-libudev
 %make
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std
 
 mkdir -p %{buildroot}/%{_initrddir}
@@ -122,31 +119,19 @@ rm -rf %{buildroot}/%{_docdir}/*
 %preun
 %_preun_service pcscd      
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING DRIVERS HELP INSTALL NEWS README SECURITY
 %doc doc/README.DAEMON
 %attr(755,root,root) %{_initrddir}/pcscd
 %{_mandir}/*/*
 %{_sbindir}/*
+%{_bindir}/pcsc-spy
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libpcsc*.so.%{major}*
+%{_libdir}/libpcscspy.so.0*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc ChangeLog
 %{_libdir}/pkgconfig/* 
 %{_includedir}/*
@@ -154,5 +139,4 @@ rm -rf %{buildroot}
 %{_libdir}/*.so
 
 %files -n %{staticname}
-%defattr(-,root,root)
 %{_libdir}/*.a
