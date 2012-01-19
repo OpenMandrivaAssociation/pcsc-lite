@@ -6,7 +6,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.8.2
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
@@ -100,7 +100,7 @@ SafeSign.
 %serverbuild
 %configure2_5x --enable-static \
    --enable-usbdropdir=%{_libdir}/pcsc/drivers/ \
-   --disable-libhal --enable-libusb --disable-libudev
+   --enable-libusb --disable-libudev  --with-systemdsystemunitdir=/lib/systemd/system/
 %make
 
 %install
@@ -126,6 +126,7 @@ rm -rf %{buildroot}/%{_docdir}/*
 %{_mandir}/*/*
 %{_sbindir}/*
 %{_bindir}/pcsc-spy
+/lib/systemd/system/pcscd.*
 
 %files -n %{libname}
 %{_libdir}/libpcsc*.so.%{major}*
