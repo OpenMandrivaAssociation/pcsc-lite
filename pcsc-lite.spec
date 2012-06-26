@@ -7,7 +7,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.8.3
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 URL:		http://pcsclite.alioth.debian.org
@@ -18,8 +18,6 @@ BuildRequires:	doxygen
 BuildRequires:	udev-devel
 BuildRequires:	usb1-devel
 
-Requires(post):  rpm-helper >= 0.24.8-1
-Requires(preun): rpm-helper >= 0.24.8-1
 Requires:	%{libname} = %{version}
 
 %description
