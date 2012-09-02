@@ -104,8 +104,7 @@ Buildarch:	noarch
 %serverbuild
 %configure2_5x --disable-static \
    --enable-ipcdir=%{_localstatedir}/run \
-   --enable-usbdropdir=%{_libdir}/pcsc/drivers \
-   --disable-libhal
+   --enable-usbdropdir=%{_libdir}/pcsc/drivers
 %make
 doxygen doc/doxygen.conf; rm -f doc/api/*.{map,md5}
 
