@@ -1,5 +1,2 @@
 sources:
-  "pcsc-lite-1.8.3.tar.bz2:"	e8fffbc5f7afd40e403984d0222baed2ec5ef5a3
-  "pcsc-lite-1.8.3.tar.bz2.asc:"	b469c24e05ec52b06ec8221ea4dd4f165814a051
-  "pcsc-lite-1.8.6.tar.bz2:"	24932dfadf9504e17c628d556bd7a15b746e4811
-  "pcsc-lite-1.8.6.tar.bz2.asc:"	08b4cb90decf3be84559c8338f42076e29cbb0a1
+  "pcsc-lite-1.8.6.tar.bz2": 24932dfadf9504e17c628d556bd7a15b746e4811
