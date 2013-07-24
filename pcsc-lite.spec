@@ -16,7 +16,7 @@ Source1:	https://alioth.debian.org/frs/download.php/3695/pcsc-lite-%{version}.ta
 
 BuildRequires:	doxygen
 BuildRequires:	udev-devel
-BuildRequires:	usb1-devel
+BuildRequires:	pkgconfig(libusb-1.0)
 
 Requires:	%{libname} = %{version}
 
