@@ -1,7 +1,3 @@
-removed_sources:
-  pcsc-lite-1.8.6.tar.bz2: 24932dfadf9504e17c628d556bd7a15b746e4811
-  pcsc-lite-1.8.8.tar.bz2: 714efaaaf5333e4a04309efd3a6dbc8e7edc61ce
 sources:
-  pcsc-lite-1.8.10.tar.bz2: ad32efa306ab4c1f4e277f62a7be2ebd3047ea98
-  pcsc-lite-1.8.10.tar.bz2.asc: 6c73cf4936a50096a2e09cd16999a2180bace62d
-  pcsc-lite-1.8.8.tar.bz2.asc: d51ef3b9db9b908cd17f1ed029b709ad645aa0bd
+  pcsc-lite-1.8.12.tar.bz2: dc06f6971c2111a82597a337de560b065dd317a8
+  pcsc-lite-1.8.12.tar.bz2.asc: 3eeec3349f3c89826fad01d2562f25184aa35989
