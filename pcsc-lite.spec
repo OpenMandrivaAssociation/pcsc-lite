@@ -6,13 +6,13 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.8.12
+Version:	1.8.13
 Release:	1
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
-Source0:	https://alioth.debian.org/frs/download.php/3695/pcsc-lite-%{version}.tar.bz2
-Source1:	https://alioth.debian.org/frs/download.php/3695/pcsc-lite-%{version}.tar.bz2.asc
+Source0:	https://alioth.debian.org/frs/download.php/4126/pcsc-lite-%{version}.tar.bz2
+Source1:	https://alioth.debian.org/frs/download.php/4126/pcsc-lite-%{version}.tar.bz2.asc
 
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(libudev)
