@@ -91,7 +91,8 @@ Buildarch:	noarch
     --disable-static \
     --enable-ipcdir=%{_localstatedir}/run \
     --enable-polkit \
-    --enable-libusb \
+    --enable-libudev \
+    --disable-libusb \
     --with-systemdsystemunitdir=%{_systemunitdir} \
     --enable-usbdropdir=%{_libdir}/pcsc/drivers
 
