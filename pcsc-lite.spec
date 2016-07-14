@@ -13,6 +13,7 @@ Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
 Source0:	https://alioth.debian.org/frs/download.php/4126/pcsc-lite-%{version}.tar.bz2
 Source1:	org.debian.pcsc-lite.policy
+BuildRequires:	flex
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(libusb-1.0)
