@@ -7,7 +7,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.8.17
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
@@ -19,6 +19,7 @@ BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(polkit-agent-1)
 Requires:	%{libname} = %{version}
 Requires:	polkit
+Requires:	ccid
 
 %description
 The purpose of PC/SC Lite is to provide a Windows(R) SCard interface
@@ -90,6 +91,8 @@ Buildarch:	noarch
     --disable-static \
     --enable-ipcdir=%{_localstatedir}/run \
     --enable-polkit \
+    --enable-libusb \
+    --with-systemdsystemunitdir=%{_systemunitdir} \
     --enable-usbdropdir=%{_libdir}/pcsc/drivers
 
 %make
