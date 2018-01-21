@@ -7,7 +7,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.8.23
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
@@ -113,18 +113,16 @@ mkdir -p %{buildroot}%{_libdir}/pcsc/drivers
 mkdir -p %{buildroot}%{_localstatedir}/run/pcscd
 
 install -d %{buildroot}%{_presetdir}
-cat > %{buildroot}%{_presetdir}/pcsc-lite.preset << EOF
+cat > %{buildroot}%{_presetdir}/86-pcsc-lite.preset << EOF
 enable pcscd.socket
 EOF
 
 %files
-%doc AUTHORS DRIVERS HELP INSTALL NEWS README SECURITY
-%doc doc/README.DAEMON
 %dir %{_sysconfdir}/reader.conf.d/
 %dir %{_libdir}/pcsc/
 %dir %{_libdir}/pcsc/drivers/
 %ghost %dir %{_localstatedir}/run/pcscd/
-%{_presetdir}/pcsc-lite.preset
+%{_presetdir}/86-pcsc-lite.preset
 %{_unitdir}/*
 %{_sbindir}/*
 %{_datadir}/polkit-1/actions/*.policy
@@ -148,4 +146,6 @@ EOF
 %{_libdir}/*.so
 
 %files doc
+%doc AUTHORS DRIVERS HELP INSTALL NEWS README SECURITY
+%doc doc/README.DAEMON
 %doc doc/api/ doc/example/pcsc_demo.c COPYING
