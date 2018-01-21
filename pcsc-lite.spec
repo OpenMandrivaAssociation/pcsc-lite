@@ -117,6 +117,9 @@ cat > %{buildroot}%{_presetdir}/86-pcsc-lite.preset << EOF
 enable pcscd.socket
 EOF
 
+# (tpg) remove not needed docs
+rm -rf %{buildroot}%{_docdir}/pcsc-lite
+
 %files
 %dir %{_sysconfdir}/reader.conf.d/
 %dir %{_libdir}/pcsc/
@@ -140,12 +143,11 @@ EOF
 %{_libdir}/libpcscspy.so.%{pcscspy_major}*
 
 %files -n %{devname}
-%doc ChangeLog COPYING
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_libdir}/*.so
 
 %files doc
-%doc AUTHORS DRIVERS HELP INSTALL NEWS README SECURITY
+%doc AUTHORS DRIVERS HELP INSTALL NEWS README SECURITY ChangeLog COPYING
 %doc doc/README.DAEMON
 %doc doc/api/ doc/example/pcsc_demo.c COPYING
