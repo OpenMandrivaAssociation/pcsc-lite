@@ -18,6 +18,7 @@ BuildRequires:	doxygen
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(polkit-agent-1)
+BuildRequires:	pkgconfig(libsystemd)
 Requires:	%{libname} = %{version}
 Requires:	polkit
 Requires:	ccid
