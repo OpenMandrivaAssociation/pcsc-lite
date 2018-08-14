@@ -7,7 +7,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.8.23
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
@@ -50,7 +50,7 @@ SafeSign.
 Summary:	PCSC API spy
 Group:		System/Libraries
 Requires:	python
-Requires:	pcsc-lite
+Requires:	pcsc-lite >= %{version}
 Requires:	%{libpcscspy} = %{version}
 
 %description -n	pcsc-spy
@@ -127,7 +127,7 @@ rm -rf %{buildroot}%{_docdir}/pcsc-lite
 %dir %{_libdir}/pcsc/drivers/
 %ghost %dir %{_localstatedir}/run/pcscd/
 %{_presetdir}/86-pcsc-lite.preset
-%{_unitdir}/*
+%{_systemunitdir}/*
 %{_sbindir}/*
 %{_datadir}/polkit-1/actions/*.policy
 %{_mandir}/man5/*
