@@ -19,6 +19,7 @@ BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(polkit-agent-1)
 BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	systemd-macros
 Requires:	%{libname} = %{version}
 Requires:	polkit
 Requires:	ccid
@@ -85,7 +86,7 @@ Buildarch:	noarch
 %{summary}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %serverbuild
@@ -95,14 +96,14 @@ Buildarch:	noarch
     --enable-polkit \
     --enable-libudev \
     --disable-libusb \
-    --with-systemdsystemunitdir=%{_systemunitdir} \
+    --with-systemdsystemunitdir=%{_unitdir} \
     --enable-usbdropdir=%{_libdir}/pcsc/drivers
 
-%make
+%make_build
 doxygen doc/doxygen.conf; rm -f doc/api/*.{map,md5}
 
 %install
-%makeinstall_std
+%make_install
 
 rm -f %{buildroot}%{_datadir}/polkit-1/actions/org.debian.pcsc-lite.policy
 mkdir -p %{buildroot}%{_datadir}/polkit-1/actions/
@@ -127,7 +128,7 @@ rm -rf %{buildroot}%{_docdir}/pcsc-lite
 %dir %{_libdir}/pcsc/drivers/
 %ghost %dir %{_localstatedir}/run/pcscd/
 %{_presetdir}/86-pcsc-lite.preset
-%{_systemunitdir}/*
+%{_unitdir}/*
 %{_sbindir}/*
 %{_datadir}/polkit-1/actions/*.policy
 %{_mandir}/man5/*
