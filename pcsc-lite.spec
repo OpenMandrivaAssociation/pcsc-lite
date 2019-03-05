@@ -150,6 +150,6 @@ rm -rf %{buildroot}%{_docdir}/pcsc-lite
 %{_libdir}/*.so
 
 %files doc
-%doc AUTHORS DRIVERS HELP INSTALL NEWS README SECURITY ChangeLog COPYING
+%doc AUTHORS HELP INSTALL NEWS README SECURITY ChangeLog COPYING
 %doc doc/README.DAEMON
 %doc doc/api/ doc/example/pcsc_demo.c COPYING
