@@ -6,12 +6,12 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.8.24
+Version:	1.8.25
 Release:	1
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
-Source0:	https://alioth.debian.org/frs/download.php/4126/pcsc-lite-%{version}.tar.bz2
+Source0:	https://github.com/LudovicRousseau/PCSC/archive/pcsc-%{version}.tar.gz
 Source1:	org.debian.pcsc-lite.policy
 BuildRequires:	flex
 BuildRequires:	doxygen
@@ -86,7 +86,9 @@ Buildarch:	noarch
 %{summary}.
 
 %prep
-%autosetup -p1
+%setup -qn PCSC-pcsc-%{version}
+%autopatch -p1
+autoreconf -fiv
 
 %build
 %serverbuild
