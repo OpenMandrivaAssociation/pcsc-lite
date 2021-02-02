@@ -7,7 +7,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.9.0
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
@@ -123,6 +123,15 @@ EOF
 
 # (tpg) remove not needed docs
 rm -rf %{buildroot}%{_docdir}/pcsc-lite
+
+%post
+%systemd_post pcscd.socket
+
+%preun
+%systemd_preun pcscd.socket
+
+%postun
+%systemd_postun_with_restart pcscd.socket
 
 %files
 %dir %{_sysconfdir}/reader.conf.d/
