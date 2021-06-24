@@ -6,12 +6,12 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	1.9.0
-Release:	2
+Version:	1.9.1
+Release:	1
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
-Source0:	https://github.com/LudovicRousseau/PCSC/archive/pcsc-%{version}.tar.gz
+Source0:	https://github.com/LudovicRousseau/PCSC/archive/PCSC-%{version}.tar.gz
 Source1:	org.debian.pcsc-lite.policy
 BuildRequires:	flex
 BuildRequires:	doxygen
@@ -19,10 +19,11 @@ BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(polkit-agent-1)
 BuildRequires:	pkgconfig(libsystemd)
-BuildRequires:	systemd-macros
+BuildRequires:	systemd-rpm-macros
 Requires:	%{libname} = %{version}
 Requires:	polkit
 Requires:	ccid
+%systemd_requires
 
 %description
 The purpose of PC/SC Lite is to provide a Windows(R) SCard interface
@@ -38,7 +39,7 @@ Summary:	Muscle PCSC Framework for Linux libraries
 Group:		System/Libraries
 Provides:	libpcsclite%{major} = %{version}-%{release}
 
-%description -n	%{libname}
+%description -n %{libname}
 The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a
 very small form factor for communicating to smartcards and readers.
 PCSC Lite uses the same winscard api as used under Windows(R).
@@ -62,7 +63,7 @@ and the PC/SC library.
 Summary:	PCSC Smart Card Library
 Group:		System/Libraries
 
-%description -n	%{libpcscspy}
+%description -n %{libpcscspy}
 Supporting library for the PC/SC spy tool.
 
 %package -n %{devname}
@@ -72,7 +73,7 @@ Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libpcscspy} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{devname}
+%description -n %{devname}
 The %{name}-devel package contains the header files and libraries
 needed for compiling PCSC Lite programs. If you want to develop PCSC Lite-aware
 programs, you'll need to install this package.
@@ -86,12 +87,10 @@ Buildarch:	noarch
 %{summary}.
 
 %prep
-%setup -qn PCSC-pcsc-%{version}
-%autopatch -p1
+%autosetup -n PCSC-%{version} -p1
 autoreconf -fiv
 
 %build
-%serverbuild
 %configure \
     --disable-static \
     --enable-ipcdir=%{_rundir} \
@@ -162,5 +161,4 @@ rm -rf %{buildroot}%{_docdir}/pcsc-lite
 
 %files doc
 %doc AUTHORS HELP INSTALL NEWS README SECURITY ChangeLog COPYING
-%doc doc/README.DAEMON
 %doc doc/api/ doc/example/pcsc_demo.c COPYING
