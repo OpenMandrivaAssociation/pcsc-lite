@@ -7,7 +7,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.9.1
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
@@ -141,15 +141,15 @@ rm -rf %{buildroot}%{_docdir}/pcsc-lite
 %{_unitdir}/*
 %{_sbindir}/*
 %{_datadir}/polkit-1/actions/*.policy
-%{_mandir}/man5/*
-%{_mandir}/man8/*
+%doc %{_mandir}/man5/*
+%doc %{_mandir}/man8/*
 
 %files -n %{libname}
 %{_libdir}/libpcsc*.so.%{major}*
 
 %files -n pcsc-spy
 %{_bindir}/pcsc-spy
-%{_mandir}/man1/pcsc-spy.1.*
+%doc %{_mandir}/man1/pcsc-spy.1.*
 
 %files -n %{libpcscspy}
 %{_libdir}/libpcscspy.so.%{pcscspy_major}*
@@ -161,4 +161,4 @@ rm -rf %{buildroot}%{_docdir}/pcsc-lite
 
 %files doc
 %doc AUTHORS HELP INSTALL NEWS README SECURITY ChangeLog COPYING
-%doc doc/api/ doc/example/pcsc_demo.c COPYING
+%doc doc/api/ doc/example/pcsc_demo.c
