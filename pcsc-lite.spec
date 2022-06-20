@@ -88,7 +88,6 @@ Buildarch:	noarch
 
 %prep
 %autosetup -n PCSC-%{version} -p1
-autoreconf -fiv
 
 %build
 %configure \
