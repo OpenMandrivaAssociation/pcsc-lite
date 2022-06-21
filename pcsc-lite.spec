@@ -20,7 +20,6 @@ BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(polkit-agent-1)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	systemd-rpm-macros
-BuildRequires:	autoconf automake
 Requires:	%{libname} = %{version}
 Requires:	polkit
 Requires:	ccid
@@ -89,7 +88,6 @@ Buildarch:	noarch
 
 %prep
 %autosetup -n PCSC-%{version} -p1
-autoheader
 
 %build
 %configure \
