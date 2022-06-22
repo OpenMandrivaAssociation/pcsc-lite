@@ -1,3 +1,5 @@
+%define _disable_rebuild_configure 1
+
 %define major 1
 %define pcscspy_major 0
 %define libname %mklibname pcsclite %{major}
@@ -7,7 +9,7 @@
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
 Version:	1.9.8
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		System/Servers
 Url:		http://pcsclite.alioth.debian.org
@@ -20,6 +22,7 @@ BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(polkit-agent-1)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	systemd-rpm-macros
+BuildRequires:	autoconf-archive
 Requires:	%{libname} = %{version}
 Requires:	polkit
 Requires:	ccid
@@ -88,6 +91,7 @@ Buildarch:	noarch
 
 %prep
 %autosetup -n PCSC-%{version} -p1
+./bootstrap
 
 %build
 %configure \
