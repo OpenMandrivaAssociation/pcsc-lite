@@ -8,7 +8,7 @@
 
 Summary:	M.U.S.C.L.E. PC/SC Framework for Linux
 Name:		pcsc-lite
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 License:	BSD-like
 Group:		System/Servers
