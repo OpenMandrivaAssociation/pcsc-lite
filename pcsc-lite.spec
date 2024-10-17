@@ -12,7 +12,7 @@ Version:	2.0.3
 Release:	1
 License:	BSD-like
 Group:		System/Servers
-Url:		http://pcsclite.alioth.debian.org
+Url:		https://pcsclite.alioth.debian.org
 Source0:	https://github.com/LudovicRousseau/PCSC/archive/refs/tags/%{version}.tar.gz
 Source1:	org.debian.pcsc-lite.policy
 BuildRequires:	flex
