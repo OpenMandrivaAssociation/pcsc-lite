@@ -15,6 +15,10 @@ Group:		System/Servers
 Url:		https://pcsclite.alioth.debian.org
 Source0:	https://github.com/LudovicRousseau/PCSC/archive/refs/tags/%{version}.tar.gz
 Source1:	org.debian.pcsc-lite.policy
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	flex
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(libudev)
